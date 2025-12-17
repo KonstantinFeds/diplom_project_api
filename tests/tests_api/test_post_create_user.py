@@ -1,22 +1,13 @@
-from tests.api.pages.user_api import PostCreateUser
+
+from tests.api.pages.user_api import User
 
 
-def test_post_create_user_success(api_url,headers):
+def test_post_create_user_success(api_url,headers,user_payload):
 
-    post_create_user = PostCreateUser()
+    user = User(api_url,headers)
 
-    method = 'POST'
-    endpoint = '/v2/user/'
+    create_response = user.post_create_user_request_body(user_payload)
+    assert create_response.status_code == 200
 
-    response = post_create_user.post_request_body(
-        api_url=api_url,
-        headers=headers,
-        method=method,
-        endpoint=endpoint)
-
-    assert response.status_code == 200
-
-    post_create_user.validate_response_body()
-
-
+    user.validate_post_create_user_response()
 

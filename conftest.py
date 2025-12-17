@@ -1,5 +1,8 @@
 import pytest
+from faker import Faker
+from tests.api.data.generators import payload_generate_user
 
+fake = Faker()
 
 @pytest.fixture()
 def api_url():
@@ -13,5 +16,17 @@ def headers():
     }
 
     return headers
+
+@pytest.fixture(scope="session")
+def user_payload():
+    """Фикстура возвращает полный payload с username"""
+    return payload_generate_user()
+
+
+@pytest.fixture
+def common_username(user_payload):
+    """Username берется из payload"""
+    return user_payload["username"]
+
 
 
