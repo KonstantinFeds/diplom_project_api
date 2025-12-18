@@ -103,9 +103,24 @@ class User:
 
 
     def validate_get_user_login_response(self):
-        with open(path_from_json_schemas("get_login_user.json"), encoding="utf-8") as file:
+        with open(path_from_json_schemas("get_login.json"), encoding="utf-8") as file:
             schema = json.load(file)
             validate(self.response.json(), schema)
+
+
+    def get_user_logout(self):
+        self.response = requests.request(method='GET',
+                                         url=f'{self.api_url}/v2/user/logout',
+                                         headers=self.headers,
+                                         timeout=10)
+
+        return self.response
+
+    def validate_get_user_logout_response(self):
+        with open(path_from_json_schemas("get_logout.json"), encoding="utf-8") as file:
+            schema = json.load(file)
+            validate(self.response.json(), schema)
+
 
 
 
