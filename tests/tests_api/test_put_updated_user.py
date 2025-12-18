@@ -14,7 +14,9 @@ def test_put_update_user_success(api_url,headers,user_payload,common_username):
     user.generate_update_payload(user_payload)
 
     #Обновляем use
+    user.validate_put_user_payload(user.update_payload)
     response_put = user.put_update_user_request_body(common_username, user.update_payload)
+
     assert response_put.status_code == 200
     user.validate_put_user_response()
 

@@ -17,6 +17,7 @@ class User:
         self.new_username = None
 
 
+
     def post_create_user_request_body(self,user_payload):
 
         self.response = requests.request(method='POST',
@@ -31,9 +32,18 @@ class User:
 
     def validate_post_create_user_response(self):
 
-        with open(path_from_json_schemas("post_create_user.json"), encoding="utf-8") as file:
+        with open(path_from_json_schemas("post_create_user_response.json"), encoding="utf-8") as file:
             schema = json.load(file)
             validate(self.response.json(), schema)
+
+
+    def validate_post_create_user_payload(self, user_payload):
+
+        with open(path_from_json_schemas('post_create_user_payload.json'), encoding="utf-8") as file:
+            schema = json.load(file)
+            validate(user_payload, schema)
+
+        return self
 
 
     def get_user_by_username(self,common_username):
@@ -48,7 +58,7 @@ class User:
         return self.response
 
     def validate_get_user_response(self):
-        with open(path_from_json_schemas("get_user.json"), encoding="utf-8") as file:
+        with open(path_from_json_schemas("get_user_response.json"), encoding="utf-8") as file:
             schema = json.load(file)
             validate(self.response.json(), schema)
 
@@ -84,8 +94,17 @@ class User:
         self.new_username = self.update_payload["username"]
 
 
+    def validate_put_user_payload(self,update_payload):
+        with open(path_from_json_schemas('put_user_payload.json'), encoding="utf-8") as file:
+            schema = json.load(file)
+            validate(update_payload, schema)
+
+        return self
+
+
+
     def validate_put_user_response(self):
-        with open(path_from_json_schemas("put_user.json"), encoding="utf-8") as file:
+        with open(path_from_json_schemas("put_user_response.json"), encoding="utf-8") as file:
             schema = json.load(file)
             validate(self.response.json(), schema)
 
@@ -104,7 +123,7 @@ class User:
 
 
     def validate_get_user_login_response(self):
-        with open(path_from_json_schemas("get_login.json"), encoding="utf-8") as file:
+        with open(path_from_json_schemas("get_login_response.json"), encoding="utf-8") as file:
             schema = json.load(file)
             validate(self.response.json(), schema)
 
@@ -118,7 +137,7 @@ class User:
         return self.response
 
     def validate_get_user_logout_response(self):
-        with open(path_from_json_schemas("get_logout.json"), encoding="utf-8") as file:
+        with open(path_from_json_schemas("get_logout_response.json"), encoding="utf-8") as file:
             schema = json.load(file)
             validate(self.response.json(), schema)
 
@@ -132,7 +151,7 @@ class User:
         return self.response
 
     def validate_delete_user_response(self):
-        with open(path_from_json_schemas("delete_user.json"), encoding="utf-8") as file:
+        with open(path_from_json_schemas("delete_user_response.json"), encoding="utf-8") as file:
             schema = json.load(file)
             validate(self.response.json(), schema)
 
