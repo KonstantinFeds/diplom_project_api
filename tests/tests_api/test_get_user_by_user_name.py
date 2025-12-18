@@ -13,4 +13,6 @@ def test_get_user_by_user_name_success(api_url,headers,user_payload,common_usern
     user.validate_get_user_response()
     user.assert_get_response_body(user_payload)
 
+    user.delete_user(common_username)
+
 

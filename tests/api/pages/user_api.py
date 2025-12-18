@@ -1,7 +1,7 @@
 import json
 import requests
 from jsonschema import validate
-from conftest import user_payload
+from conftest import user_payload, common_username
 from tests.api.data.generators import payload_generate_user
 from utils.file import path_from_json_schemas
 
@@ -77,16 +77,17 @@ class User:
 
         return  self.response
 
-    def validate_put_user_response(self):
-        with open(path_from_json_schemas("put_user.json"), encoding="utf-8") as file:
-            schema = json.load(file)
-            validate(self.response.json(), schema)
-
 
     def generate_update_payload(self,original_payload):
         self.update_payload = payload_generate_user()
         self.update_payload["id"] = original_payload["id"]
         self.new_username = self.update_payload["username"]
+
+
+    def validate_put_user_response(self):
+        with open(path_from_json_schemas("put_user.json"), encoding="utf-8") as file:
+            schema = json.load(file)
+            validate(self.response.json(), schema)
 
 
     def get_user_login(self,common_username, common_password):
@@ -120,6 +121,21 @@ class User:
         with open(path_from_json_schemas("get_logout.json"), encoding="utf-8") as file:
             schema = json.load(file)
             validate(self.response.json(), schema)
+
+
+    def delete_user(self, common_username):
+        self.response = requests.request(method='DELETE',
+                                         url=f'{self.api_url}/v2/user/{common_username}',
+                                         headers=self.headers,
+                                         timeout=10)
+
+        return self.response
+
+    def validate_delete_user_response(self):
+        with open(path_from_json_schemas("delete_user.json"), encoding="utf-8") as file:
+            schema = json.load(file)
+            validate(self.response.json(), schema)
+
 
 
 

@@ -26,3 +26,6 @@ def test_put_update_user_success(api_url,headers,user_payload,common_username):
     assert response_data['id'] == user_payload['id']
 
 
+    user.delete_user(user.new_username)
+
+

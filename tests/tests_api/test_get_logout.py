@@ -10,3 +10,5 @@ def test_get_logout_success(api_url,headers):
     assert get_response.status_code == 200
     user.validate_get_user_logout_response()
 
+
+

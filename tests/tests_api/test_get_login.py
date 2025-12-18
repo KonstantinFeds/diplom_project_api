@@ -11,6 +11,8 @@ def test_get_login_user_success(common_username,common_password,user_payload,api
     assert response_get.status_code == 200
     user.validate_get_user_login_response()
 
+    user.delete_user(common_username)
+
 
 
 

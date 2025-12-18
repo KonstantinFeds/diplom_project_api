@@ -2,7 +2,7 @@
 from tests.api.pages.user_api import User
 
 
-def test_post_create_user_success(api_url,headers,user_payload):
+def test_post_create_user_success(api_url,headers,user_payload,common_username):
 
     user = User(api_url,headers)
 
@@ -10,4 +10,6 @@ def test_post_create_user_success(api_url,headers,user_payload):
     assert create_response.status_code == 200
 
     user.validate_post_create_user_response()
+
+    user.delete_user(common_username)
 
