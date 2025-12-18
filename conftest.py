@@ -28,5 +28,3 @@ def common_username(user_payload):
     """Username берется из payload"""
     return user_payload["username"]
 
-
-
