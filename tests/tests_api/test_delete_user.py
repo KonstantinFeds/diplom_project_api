@@ -1,6 +1,11 @@
+import allure
+
 from tests.api.pages.user_api import User
 
 
+@allure.epic('удаление пользователя')
+@allure.title('успешное удаление пользователя')
+@allure.severity(allure.severity_level.NORMAL)
 def test_delete_user_success(api_url,headers,common_username,user_payload):
 
     user = User(api_url,headers)

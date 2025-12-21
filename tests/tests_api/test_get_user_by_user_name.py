@@ -1,6 +1,10 @@
+import allure
+
 from tests.api.pages.user_api import User
 
-
+@allure.epic('получение пользователя')
+@allure.title('успешное получение пользователя')
+@allure.severity(allure.severity_level.CRITICAL)
 def test_get_user_by_user_name_success(api_url,headers,user_payload,common_username):
     user = User(api_url, headers)
 

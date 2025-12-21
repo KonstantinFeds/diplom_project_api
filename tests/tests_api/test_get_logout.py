@@ -1,6 +1,10 @@
+import allure
+
 from tests.api.pages.user_api import User
 
-
+@allure.epic('выход из системы')
+@allure.title('успешный разлогин пользователя')
+@allure.severity(allure.severity_level.NORMAL)
 def test_get_logout_success(api_url,headers):
     user = User(api_url,headers)
 

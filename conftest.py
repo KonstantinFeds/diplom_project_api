@@ -1,13 +1,16 @@
+import allure
 import pytest
 from faker import Faker
 from tests.api.data.generators import payload_generate_user
 
 fake = Faker()
 
+@allure.title('api url')
 @pytest.fixture()
 def api_url():
     return 'https://petstore.swagger.io'
 
+@allure.title('request headers')
 @pytest.fixture()
 def headers():
     headers = {
@@ -17,11 +20,12 @@ def headers():
 
     return headers
 
-@pytest.fixture(scope="session")
+@allure.title('генерация payload')
+@pytest.fixture(scope="function")
 def user_payload():
     return payload_generate_user()
 
-
+@allure.title('endpoint')
 @pytest.fixture()
 def common_username(user_payload):
     return user_payload['username']
@@ -30,7 +34,4 @@ def common_username(user_payload):
 def common_password(user_payload):
     return user_payload['password']
 
-@pytest.fixture()
-def common_id(user_payload):
-    return user_payload['id']
 
