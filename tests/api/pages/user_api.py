@@ -3,7 +3,7 @@ import json
 import allure
 import requests
 from jsonschema import validate
-from conftest import user_payload, common_username
+from tests.tests_api.conftest import user_payload, common_username
 from tests.api.data.generators import payload_generate_user
 from utils.file import path_from_json_schemas
 from utils.logger import response_logging, response_attaching

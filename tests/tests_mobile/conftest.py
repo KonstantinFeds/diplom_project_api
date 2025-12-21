@@ -1,0 +1,53 @@
+import pytest
+from appium import webdriver
+from dotenv import load_dotenv
+from selene import browser
+import config
+import utils.attach
+import allure
+
+
+@pytest.fixture(scope="session")
+def clear_allure_results():
+    config.clear_allure_results()
+
+
+def pytest_addoption(parser):
+    """добавляет опцию командной строки --context"""
+    parser.addoption("--context", default="bstack", help="Specify the test context")
+
+
+def pytest_configure(config):
+    """настройка тестового окружения на основе переданного параметра --context"""
+    context = config.getoption("--context")
+    env_file_path = f".env.{context}"
+
+    load_dotenv(dotenv_path=env_file_path)
+
+
+@pytest.fixture(scope="function")
+def context(request):
+    """возвращение контекста из командной строки"""
+    return request.config.getoption("--context")
+
+
+@allure.title("настройка конфигураций для управления девайсом")
+@pytest.fixture(scope="function", autouse=True)
+def mobile_management(context):
+
+    options = config.to_driver_options_mobile(context=context)
+
+    browser.config.driver = webdriver.Remote(
+        options.get_capability("remote_url"), options=options
+    )
+    browser.config.timeout = 10.0
+
+    yield
+
+    session_id = browser.driver.session_id
+
+    with allure.step("завершение сессии"):
+        browser.quit()
+
+    if context == "bstack":
+        utils.attach.attach_bstack_video_android(session_id)
