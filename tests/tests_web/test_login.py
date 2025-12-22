@@ -1,5 +1,5 @@
 import allure
-from tests.web.pages.login_page import LoginPage
+from pages.web.login_page import LoginPage
 
 login_page = LoginPage()
 

@@ -1,5 +1,5 @@
 import allure
-from tests.web.pages.footer_page import FooterPage
+from pages.web.footer_page import FooterPage
 
 footer_page = FooterPage()
 

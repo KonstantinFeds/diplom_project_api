@@ -1,5 +1,5 @@
 import allure
-from tests.mobile.pages.onboarding_page import OnboardingPage
+from pages.mobile.onboarding_page import OnboardingPage
 
 onboarding_page = OnboardingPage()
 

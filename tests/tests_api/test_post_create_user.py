@@ -1,13 +1,14 @@
 import allure
 
-from tests.api.pages.user_api import User
+from pages.api.user_api import User
 
-@allure.epic('создание пользователя')
-@allure.title('успешное создание пользователя')
+
+@allure.epic("создание пользователя")
+@allure.title("успешное создание пользователя")
 @allure.severity(allure.severity_level.CRITICAL)
-def test_post_create_user_success(api_url,headers,user_payload,common_username):
+def test_post_create_user_success(api_url, headers, user_payload, common_username):
 
-    user = User(api_url,headers)
+    user = User(api_url, headers)
 
     user.validate_post_create_user_payload(user_payload)
     create_response = user.post_create_user_request_body(user_payload)
@@ -17,4 +18,3 @@ def test_post_create_user_success(api_url,headers,user_payload,common_username):
     user.assert_post_create_response_body(user_payload)
 
     user.delete_user(common_username)
-

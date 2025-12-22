@@ -2,7 +2,7 @@ import time
 
 import allure
 from selene import browser, be, command, have
-from tests.web.pages.locators import LocatorsWeb
+from pages.web.locators import LocatorsWeb
 
 
 class CartPage:

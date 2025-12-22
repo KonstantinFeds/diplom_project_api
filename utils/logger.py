@@ -11,8 +11,10 @@ def response_logging(response: Response):
     if response.request.body:
         request_body = response.request.body
         if isinstance(request_body, bytes):
-            request_body = request_body.decode('utf-8')
-        logging.info("INFO Request body: " + request_body)# логирование тела запроса если оно есть
+            request_body = request_body.decode("utf-8")
+        logging.info(
+            "INFO Request body: " + request_body
+        )  # логирование тела запроса если оно есть
 
     logging.info("Request headers: " + str(response.request.headers))
 
@@ -41,7 +43,7 @@ def response_attaching(response: Response):
         request_body = response.request.body
         # Прикрепляем тело запроса, преобразовав в строку при необходимости
         if isinstance(request_body, bytes):
-            request_body = request_body.decode('utf-8')
+            request_body = request_body.decode("utf-8")
         # логирование тела запроса если оно есть
         allure.attach(
             body=json.dumps(request_body, indent=4, ensure_ascii=True),

@@ -1,6 +1,6 @@
 import allure
-from tests.mobile.pages.login_page import LoginPage
-from tests.mobile.pages.onboarding_page import OnboardingPage
+from pages.mobile.login_page import LoginPage
+from pages.mobile.onboarding_page import OnboardingPage
 
 onboarding_page = OnboardingPage()
 login_page = LoginPage()

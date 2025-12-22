@@ -1,7 +1,7 @@
 import allure
 from appium.webdriver.common.appiumby import AppiumBy
 from selene import browser, have
-from tests.mobile.pages.locators import LocatorsMob
+from pages.mobile.locators import LocatorsMob
 
 
 class OnboardingPage:

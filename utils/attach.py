@@ -11,6 +11,7 @@ load_dotenv(dotenv_path=utils.file.abs_path_from_project("../.env.credentials"))
 USER_NAME_BSTACK = os.getenv("USER_NAME_BSTACK")
 ACCESS_KEY_BSTACK = os.getenv("ACCESS_KEY_BSTACK")
 
+
 # запись теста с bstack
 def attach_bstack_video_android(session_id):
 

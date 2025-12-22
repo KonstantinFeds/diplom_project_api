@@ -8,8 +8,6 @@ from appium.options.android import UiAutomator2Options
 from selenium.webdriver.chrome.options import Options
 import utils.file
 
-
-
 def clear_allure_results():
     """очистка результатов модуля allure-results"""
     allure_dir = Path("allure-results")
@@ -20,9 +18,9 @@ def clear_allure_results():
     allure_dir.mkdir(exist_ok=True)
 
 
-def to_driver_options_web(context):
-    """настройка конфигурация от переданного параметра --context"""
-    if context == "local_browser":
+def to_driver_options_web(web_context):
+    """настройка конфигурация от переданного параметра --web-context"""
+    if web_context == "local_browser":
         browser.config.base_url = "https://ural-auto.ru/"
         browser.config.timeout = 10
         browser.config.window_width = 1495
@@ -33,12 +31,15 @@ def to_driver_options_web(context):
         driver = webdriver.Chrome(options=options)
         browser.config.driver = driver
 
-    if context == "selenoid":
+    if web_context == "selenoid":
         # Selenoid
         browser.config.base_url = "https://ural-auto.ru/"
         browser.config.timeout = 10
         browser.config.window_width = 1495
         browser.config.window_height = 870
+        driver_options = webdriver.ChromeOptions()
+        driver_options.page_load_strategy = 'eager'
+        browser.config.driver_options = driver_options
 
         # Настройки Selenoid
         options = Options()
@@ -64,10 +65,10 @@ def to_driver_options_web(context):
     return browser
 
 
-def to_driver_options_mobile(context):
-    """настройка конфигурация от переданного параметра --context"""
+def to_driver_options_mobile(mobile_context):
+    """настройка конфигурация от переданного параметра --mobile-context"""
     options = UiAutomator2Options()
-    if context == "local_emulator":
+    if mobile_context == "local_emulator":
         options.set_capability("remote_url", os.getenv("REMOTE_URL"))
         options.set_capability("deviceName", os.getenv("DEVICE_NAME"))
         options.set_capability("appWaitActivity", os.getenv("APP_WAIT_ACTIVITY"))
@@ -75,7 +76,7 @@ def to_driver_options_mobile(context):
             "app", utils.file.abs_path_from_project(os.getenv("APP"))
         )
 
-    if context == "bstack":
+    if mobile_context == "bstack":
         options.set_capability("remote_url", os.getenv("REMOTE_URL"))
         options.set_capability("deviceName", os.getenv("DEVICE_NAME"))
         options.set_capability("platformName", os.getenv("PLATFORM_NAME"))

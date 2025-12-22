@@ -1,6 +1,7 @@
-from faker  import Faker
+from faker import Faker
 
 fake = Faker()
+
 
 def payload_generate_user():
     return {
@@ -11,5 +12,5 @@ def payload_generate_user():
         "email": fake.email(),
         "password": fake.password(length=10),
         "phone": fake.phone_number()[:15],
-        "userStatus": fake.random_int(min=0, max=1)
+        "userStatus": fake.random_int(min=0, max=1),
     }

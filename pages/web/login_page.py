@@ -1,7 +1,7 @@
 import allure
 from selene import browser, have
 
-from tests.web.pages.locators import LocatorsWeb
+from pages.web.locators import LocatorsWeb
 
 
 class LoginPage:

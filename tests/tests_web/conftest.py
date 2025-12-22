@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import pytest
 from selene import browser, be
 import config
-from tests.web.pages.locators import LocatorsWeb
+from pages.web.locators import LocatorsWeb
 from utils import attach
 
 
@@ -13,41 +13,41 @@ def clean_allure_results():
 
 
 def pytest_addoption(parser):
-    """добавляет опцию командной строки --context"""
+    """добавляет опцию командной строки --web-context"""
     parser.addoption(
-        "--context",
-        default="local_browser",  # значение по умолчанию
+        "--web-context",
+        default="selenoid",  # значение по умолчанию
         help="Specify the test context",
     )
 
-
 def pytest_configure(config):
     """настройка тестового окружения на основе переданного параметра --context"""
-    context = config.getoption("--context")
-    env_file_path = f".env.{context}"
+    web_context = config.getoption("--web-context")
+    env_file_path = f".env.{web_context}"
 
     load_dotenv(dotenv_path=env_file_path)
 
 
 @pytest.fixture(scope="function")
-def context(request):
+def web_context(request):
     """возвращение контекста из командной строки"""
-    return request.config.getoption("--context")
+    return request.config.getoption("--web-context")
 
 
 @allure.title("настройка конфигураций для управления браузером")
 @pytest.fixture(scope="function", autouse=True)
-def browser_management(context):
-    config.to_driver_options_web(context)
+def browser_management(web_context):
+    config.to_driver_options_web(web_context)
+
 
     yield
 
-    attach.add_screenshot_selenoid(browser)
-    attach.add_logs_selenoid(browser)
-    attach.add_html_selenoid(browser)
 
-    if context == "selenoid":
+    if web_context == "selenoid":
         attach.add_selenoid_video(browser)
+        attach.add_screenshot_selenoid(browser)
+        attach.add_logs_selenoid(browser)
+        attach.add_html_selenoid(browser)
 
     with allure.step("завершение сессии"):
         browser.quit()

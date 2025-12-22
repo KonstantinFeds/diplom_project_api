@@ -1,6 +1,6 @@
 import allure
-from tests.web.pages.cart_page import CartPage
-from tests.web.pages.catalog_page import CatalogPage
+from pages.web.cart_page import CartPage
+from pages.web.catalog_page import CatalogPage
 
 cart_page = CartPage()
 catalog_page = CatalogPage()

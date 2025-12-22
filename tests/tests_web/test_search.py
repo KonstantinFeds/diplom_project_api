@@ -1,5 +1,5 @@
 import allure
-from tests.web.pages.search_page import SearchPage
+from pages.web.search_page import SearchPage
 
 search_page = SearchPage()
 

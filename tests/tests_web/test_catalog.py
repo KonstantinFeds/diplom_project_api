@@ -1,5 +1,5 @@
 import allure
-from tests.web.pages.catalog_page import CatalogPage
+from pages.web.catalog_page import CatalogPage
 
 catalog_page = CatalogPage()
 
