@@ -20,6 +20,7 @@ def pytest_addoption(parser):
         help="Specify the test context",
     )
 
+
 def pytest_configure(config):
     """настройка тестового окружения на основе переданного параметра --context"""
     web_context = config.getoption("--web-context")
@@ -39,9 +40,7 @@ def web_context(request):
 def browser_management(web_context):
     config.to_driver_options_web(web_context)
 
-
     yield
-
 
     if web_context == "selenoid":
         attach.add_selenoid_video(browser)

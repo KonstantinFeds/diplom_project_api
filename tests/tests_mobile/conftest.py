@@ -14,7 +14,9 @@ def clear_allure_results():
 
 def pytest_addoption(parser):
     """добавляет опцию командной строки --mobile-context"""
-    parser.addoption("--mobile-context", default="bstack", help="Specify the test context")
+    parser.addoption(
+        "--mobile-context", default="bstack", help="Specify the test context"
+    )
 
 
 def pytest_configure(config):

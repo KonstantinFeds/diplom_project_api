@@ -8,6 +8,7 @@ from appium.options.android import UiAutomator2Options
 from selenium.webdriver.chrome.options import Options
 import utils.file
 
+
 def clear_allure_results():
     """очистка результатов модуля allure-results"""
     allure_dir = Path("allure-results")
@@ -28,7 +29,7 @@ def to_driver_options_web(web_context):
 
         # Создаем локальный драйвер Chrome
         options = Options()
-        options.page_load_strategy = 'eager'
+        options.page_load_strategy = "eager"
         driver = webdriver.Chrome(options=options)
         browser.config.driver = driver
 
@@ -41,7 +42,7 @@ def to_driver_options_web(web_context):
 
         # Настройки Selenoid
         options = Options()
-        options.page_load_strategy = 'eager'
+        options.page_load_strategy = "eager"
 
         selenoid_capabilities = {
             "browserName": "chrome",
