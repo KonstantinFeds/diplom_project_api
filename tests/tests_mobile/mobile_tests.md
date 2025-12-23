@@ -1,6 +1,5 @@
 # Пример проекта мобильных автотестов для приложения WIKIPEDIA
 
-
 ###  Используемые технологии
 <p align="center">
   <code><img src="images/logo/python.png" width="40" height="40" alt="Python" title="Python"></code
@@ -74,57 +73,17 @@
    ```bash
    pytest tests/tests_mobile --mobile-context=bstack 
    ```
-
-
-
    
 ### С помощью [Jenkins](https://jenkins.autotests.cloud/job/DIPLOM_PROJECT_FEDOSEEV/)
 #### Для запуска автотестов необходимо:
  - Открыть [джобу](https://jenkins.autotests.cloud/job/DIPLOM_PROJECT_FEDOSEEV/) в jenkins
  - Нажать на кнопку Build with Parameters
- - указать credentials в параметрах selenoid_login, selenoid_password, selenoid_url
- - В select_run_autotests выбрать tests/tests_web
+ - указать credentials в параметрах user_name_bstack, access_key_bstack
+ - В select_run_autotests выбрать tests/tests_mobile
  - Нажать на Build
 
- <img src="images/screenshots/job_jenkins.png" width="700" alt="Jenkins Job">
- 
-### через selenoid
-Важно! Перед запуском, в корне проекта, нужно создать файл .env.сredentials и указать там 
-* SELENOID_LOGIN
-* SELENOID_PASSWORD
-* SELENOID_URL
+ <img src="images/screenshots/jenkins.png" width="700" alt="Jenkins Mobile Tests Configuration">
 
-Для запуска тестов через selenoid нужно выполнить следующие шаги:
-1. Склонировать репозиторий
-2. Открыть проект в PyCharm
-3. Ввести в терминале следующие команды
-   
-   3.1 установка зависимостей
-   ```bash
-   poetry install
-   ```
-   
-   3.2 запуск тестов 
-   ```bash
-   pytest tests/tests_web/ --web-context=selenoid
-   ```
-
-### локально
-
-Для локального запуска тестов нужно выполнить следующие шаги:
-1. Склонировать репозиторий
-2. Открыть проект в PyCharm
-3. Ввести в терминале следующие команды
-   
-   3.1 установка зависимостей
-   ```bash
-   poetry install
-   ```
-   
-   3.2 запуск тестов 
-   ```bash
-   pytest tests/tests_web/ --web-context=local_browser
-   ```
 
 ## Отчет о прохождении тестов (Allure)
 ### Локально
@@ -133,22 +92,19 @@
 allure serve allure-results
  ```
 Ниже представлен пример allure отчета 
-<img src="images/screenshots/allure_results_web.png" width="800" alt="Allure Report Results">
+<img src="images/screenshots/allure_results.png" width="800" alt="Allure Report for Mobile Tests">
 
 Подробные инструкции по работе с allure можно найти по [ссылке](https://allurereport.org/docs/).
+
 ### Если тесты запускались в Jenkins
 
 Для получения отчета нужно нажать на иконку allure report в строке билда. 
 У него будет точно такой же формат, как и при получении локально.
 
-<img src="images/screenshots/allure_results_web_jenkins.png" width="700" alt="Allure Results in Jenkins">
+<img src="images/screenshots/jenkins_job.png" width="700" alt="Jenkins Mobile Tests Job">
 
 ### В проекте реализована интеграция с [Allure TestsOps](https://allure.autotests.cloud/project/5062/dashboards)
-<img src="images/screenshots/allure_testops.png" width="800" alt="Allure TestOps Dashboard">
-
-
-
-
+<img src="images/screenshots/testops_mobile.png" width="800" alt="Allure TestOps Mobile Dashboard">
 
 
 
