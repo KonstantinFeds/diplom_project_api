@@ -9,7 +9,7 @@
   <code><img src="images/logo/jenkins.png" width="40" height="40" alt="Jenkins" title="Jenkins"></code>
   <code><img src="images/logo/Allure_new.png" width="40" height="40" alt="Allure Report" title="Allure Report"></code>
   <code><img src="images/logo/allure_testops.png" width="40" height="40" alt="Allure TestOps" title="Allure TestOps"></code>
-  <<code><img src="images/logo/android_studio.png" width="40" height="40" alt="Android Studio" title="Android Studio"></code
+  <code><img src="images/logo/android_studio.png" width="40" height="40" alt="Android Studio" title="Android Studio"></code>
   <code><img src="images/logo/appium.png" width="40" height="40" alt="Appium" title="Appium"></code>
   <code><img src="images/logo/tg.png" width="40" height="40" alt="Telegram" title="Telegram"></code>
 
@@ -105,6 +105,7 @@ allure serve allure-results
 
 ### В проекте реализована интеграция с [Allure TestsOps](https://allure.autotests.cloud/project/5062/dashboards)
 <img src="images/screenshots/testops_mobile.png" width="800" alt="Allure TestOps Mobile Dashboard">
+
 
 
 
