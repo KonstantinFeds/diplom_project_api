@@ -1,4 +1,5 @@
-# ПРИМЕР ПРОЕКТА АВТОТЕСТОВ ДЛЯ UI WEB
+<h1 align="center">ПРИМЕР ПРОЕКТА АВТОТЕСТОВ ДЛЯ UI WEB</h1>
+
 [URAL SOUND](https://ural-auto.ru/)
 > Компания, которая существует с 1900 года и несёт в себе память пяти поколений Русских Инженеров.
 
@@ -100,6 +101,7 @@ allure serve allure-results
 
 ### В проекте настроена отправка allerts в Telegram
 <img src="images/screenshots/tg.png" width="700" alt="Telegram Notification for API Tests">
+
 
 
 
