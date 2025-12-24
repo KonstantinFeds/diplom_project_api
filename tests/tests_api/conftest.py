@@ -7,7 +7,7 @@ from data.generators import payload_generate_user
 fake = Faker()
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="session", autouse=True)
 def clean_allure_results():
     config.clear_allure_results()
 

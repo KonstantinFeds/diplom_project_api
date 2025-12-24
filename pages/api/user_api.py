@@ -147,7 +147,7 @@ class User:
             schema = json.load(file)
             validate(self.response.json(), schema)
 
-    @allure.step("проверка что данные пользователя обновились в БД")
+    @allure.step("проверка обновления данных пользователя в БД")
     def assert_user_updated_successfully(self, old_payload, new_payload):
 
         self.get_user_by_username(new_payload["username"])

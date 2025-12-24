@@ -34,13 +34,12 @@ def to_driver_options_web(web_context):
         browser.config.driver = driver
 
     if web_context == "selenoid":
-        # Selenoid
+
         browser.config.base_url = "https://ural-auto.ru/"
         browser.config.timeout = 10
         browser.config.window_width = 1495
         browser.config.window_height = 870
 
-        # Настройки Selenoid
         options = Options()
         options.page_load_strategy = "eager"
 

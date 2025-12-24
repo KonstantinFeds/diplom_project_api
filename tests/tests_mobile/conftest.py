@@ -7,7 +7,7 @@ import utils.attach
 import allure
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="session", autouse=True)
 def clear_allure_results():
     config.clear_allure_results()
 

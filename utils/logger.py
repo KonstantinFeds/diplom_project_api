@@ -12,13 +12,11 @@ def response_logging(response: Response):
         request_body = response.request.body
         if isinstance(request_body, bytes):
             request_body = request_body.decode("utf-8")
-        logging.info(
-            "INFO Request body: " + request_body
-        )  # логирование тела запроса если оно есть
+        logging.info("INFO Request body: " + request_body)  # логирование тела запроса
 
     logging.info("Request headers: " + str(response.request.headers))
 
-    # Логируем статус код с правильным уровнем
+    # Логируем статус код
     if response.status_code >= 500:
         logging.error(f"Response code {response.status_code} - Server Error")
     elif response.status_code >= 400:

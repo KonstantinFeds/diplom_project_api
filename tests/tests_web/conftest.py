@@ -7,7 +7,7 @@ from pages.web.locators import LocatorsWeb
 from utils import attach
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="session", autouse=True)
 def clean_allure_results():
     config.clear_allure_results()
 
