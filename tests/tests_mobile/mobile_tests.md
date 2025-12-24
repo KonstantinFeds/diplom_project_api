@@ -1,4 +1,8 @@
-# Пример проекта мобильных автотестов для приложения WIKIPEDIA
+<h1 align="center" style="font-family: monospace;">
+  ПРИМЕР ПРОЕКТА МОБИЛЬНЫХ АВТОТЕСТОВ<br>
+  <span style="display: inline-block; width: 100%; text-align: right; padding-right: 40%;">ДЛЯ ПРИЛОЖЕНИЯ WIKIPEDIA</span>
+</h1>
+
 <br>
 <p align="center">
   <img src="images/screenshots/screen_emulator.png" width="400" alt="Wikipedia app">
@@ -115,6 +119,7 @@ allure serve allure-results
 
 ### В проекте настроена отправка allerts в Telegram
 <img src="images/screenshots/tg.png" width="700" alt="Telegram Notification for API Tests">
+
 
 
 
